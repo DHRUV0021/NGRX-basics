@@ -1,0 +1,21 @@
+<div class="container">
+
+  <div class="toolbar">
+    <h2>Product Page</h2>
+
+    <div class="cart-info" [routerLink]="'/cart'" *ngIf="cartList$ | async">
+      🛒 <span class="cart-count">{{cartItemCount}}</span>
+    </div>
+  </div>
+
+  <div class="product-list">
+    <div class="product-item" *ngFor="let item of productList$ | async">
+      <span class="product-id">#{{ item.id }}</span>
+      <img [src]="item.image" alt="No image found" class="product-image">
+      <span class="product-name">{{ item.name }}</span>
+      <span class="product-amount">${{ item.amount }}</span>
+      <button class="add-cart-btn" (click)="addCart(item)">Add to Cart</button>
+    </div>
+  </div>
+
+</div>
